@@ -15,6 +15,9 @@ export default class Sup extends React.Component{
             pass: this.refs.pass.value
         }
 
+        var firebaseRef = firebase.database().ref();
+            firebaseRef.push().set(signUpDetail);
+
         firebase.auth().createUserWithEmailAndPassword(signUpDetail.email, signUpDetail.pass).then( () => {console.log('signUp Sucessfull')} ).catch(function(error) {
              // Handle Errors here.
             var errorMessage = error.message;

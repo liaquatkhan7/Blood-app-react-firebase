@@ -5,9 +5,6 @@ import * as firebase from 'firebase';
 class Signin extends Component{
     constructor(){
         super();
-        this.state = {
-            uid: ''
-        }
         this.sIn = this.sIn.bind(this);
         this.logOut = this.logOut.bind(this);
     }
@@ -18,7 +15,9 @@ class Signin extends Component{
             pass: this.refs.password.value
         }
 
-        firebase.auth().signInWithEmailAndPassword(signInDetails.email, signInDetails.pass).then(()=>{console.log('log in sucessfull')}).catch((error) => {
+        firebase.auth().signInWithEmailAndPassword(signInDetails.email, signInDetails.pass).then(() => {
+            console.log('log in sucessfull')
+            {window.location.assign('/home')}}).catch((error) => {
             // Handle Errors here.
             var errorMessage = error.message;
             alert(errorMessage)
